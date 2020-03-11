@@ -79,7 +79,7 @@ public class Usuario {
 		PeliUser = new Peliculas(IDu, titulou, Directoru, Generou, añoEstrenou);
 		listaPeliculas.add(PeliUser);
 	}
-	
+
 	public static void MostrarLista(ArrayList<Peliculas> listaPeliculas) {
 		for (Peliculas films : listaPeliculas) {
 			System.out.println(films.toString());
