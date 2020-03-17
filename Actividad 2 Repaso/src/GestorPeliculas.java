@@ -10,8 +10,7 @@ public class GestorPeliculas {
 		Peliculas Peli1, Peli2, Peli3;
 
 		Peli1 = new Peliculas("P1", "BlackHat, Amenaza en la red", "Michael Mann", "Thriller|Crimen", 2015);
-		Peli2 = new Peliculas("P2", "The Imitation Game(Descifrando Enigma)", "Morten Tyldum", "Thriller|Biográfico",
-				2014);
+		Peli2 = new Peliculas("P2", "The Imitation Game(Descifrando Enigma)", "Morten Tyldum", "Thriller|Biográfico",2014);
 		Peli3 = new Peliculas("P3", "Avengers Endgame", "Anthony Russo, Joe Russo (Hrmns Russo)",
 				"Ciencia Ficción|Superheroes", 2019);
 		listaPeliculas.add(Peli1);

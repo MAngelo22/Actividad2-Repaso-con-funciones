@@ -18,6 +18,7 @@ public class Usuario extends GestorPeliculas{
 					+ "3- Buscar Pelicula por id\r\n" + "4- Buscar pelicula por titulo\r\n"
 					+ "5- Buscar Peliculas por genero\r\n" + "6- Borrar pelicula por id\r\n"
 					+ "7- Salir de la aplicación");
+			
 			// -----Interaccion-Usuario-----
 
 			Boton = teclado.nextInt();
