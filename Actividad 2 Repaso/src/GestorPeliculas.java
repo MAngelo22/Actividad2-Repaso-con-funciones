@@ -30,30 +30,11 @@ public class GestorPeliculas {
 		}
 	}
 	
-	public void introducirPelicula(ArrayList<Peliculas> listaPeliculas) {
-		Peliculas PeliUser;
-		System.out.println("Creando pelicula:\r\n" + "Introduzca un ID: ");
-		String IDu = teclado.next();
-
-		System.out.println("Introduzca un Titulo: ");
-		String titulou = teclado.next();
-
-		System.out.println("Introduzca uno o varios Director/es: ");
-		String Directoru = teclado.next();
-
-		System.out.println("Introduzca genero: ");
-		String Generou = teclado.next();
-
-		System.out.println("Introduzca un año: ");
-		int añoEstrenou = teclado.nextInt();
-
-		PeliUser = new Peliculas(IDu, titulou, Directoru, Generou, añoEstrenou);
-		listaPeliculas.add(PeliUser);
+	public void introducirPelicula(ArrayList<Peliculas> listaPeliculas, String IDu, String titulou, String directoru, String Generou, int anoEstreno) {
+		listaPeliculas.add(new Peliculas(IDu, titulou, directoru, Generou, anoEstreno));
 	}
 
-	public void BuscarId(ArrayList<Peliculas> listaPeliculas) {
-		System.out.println("Introduce el Id a buscar:");
-		String idABuscar = teclado.next();
+	public void BuscarId(ArrayList<Peliculas> listaPeliculas, String idABuscar) {
 		for (Peliculas i : listaPeliculas) {
 			if (idABuscar.equals(i.getID())) {
 				System.out.println(i.toString());
@@ -61,9 +42,7 @@ public class GestorPeliculas {
 		}
 	}
 
-	public void BuscarTitulo(ArrayList<Peliculas> listaPeliculas) {
-		System.out.println("Introduce el Titulo a buscar:");
-		String TituloABuscar = teclado.next();
+	public void BuscarTitulo(ArrayList<Peliculas> listaPeliculas, String TituloABuscar) {
 		for (Peliculas e : listaPeliculas) {
 			if (TituloABuscar.equals(e.getTitulo())) {
 				System.out.println(e.toString());
@@ -71,20 +50,15 @@ public class GestorPeliculas {
 		}
 	}
 
-	public void BuscarGenero(ArrayList<Peliculas> listaPeliculas) {
-		System.out.println("Introduce el Genero a buscar:");
-		String GeneroABuscar = teclado.next();
+	public void BuscarGenero(ArrayList<Peliculas> listaPeliculas, String generoBuscar) {
 		for (Peliculas a : listaPeliculas) {
-			if (GeneroABuscar.equals(a.getGenero())) {
+			if (generoBuscar.equals(a.getGenero())) {
 				System.out.println(a.toString());
 			}
 		}
 	}
 
-	public void BorrarPeli(ArrayList<Peliculas> listaPeliculas) {
-		System.out.println("Introduce el ID a borrar:");
-		String IDABorrar = teclado.next();
-
+	public void BorrarPeli(ArrayList<Peliculas> listaPeliculas, String IDABorrar) {
 		Iterator<Peliculas> iteradorPelis = listaPeliculas.iterator();
 		while (iteradorPelis.hasNext()) {
 			Peliculas peliBorra = iteradorPelis.next();

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Usuario extends GestorPeliculas{
@@ -13,7 +12,6 @@ public class Usuario extends GestorPeliculas{
 
 		int Boton = 0;
 		// -----Funciones-Botones-------
-		String Texto = "";
 		do {
 			// --------Menu--------
 			System.out.println("Selecciona :\r\n" + "1- Alta de pelicula\r\n" + "2- Listar Pelicula\r\n"
@@ -26,25 +24,49 @@ public class Usuario extends GestorPeliculas{
 
 			switch (Boton) {
 			case 1:
-				gesPel.introducirPelicula(miListado);
+				teclado.nextLine();
+				System.out.println("Creando pelicula:");
+				System.out.println("Introduzca un ID: ");
+				String identi = teclado.nextLine();
+
+				System.out.println("Introduzca un Titulo: ");
+				String titulou = teclado.nextLine();
+
+				System.out.println("Introduzca uno o varios Director/es: ");
+				String Directoru = teclado.nextLine();
+
+				System.out.println("Introduzca genero: ");
+				String Generou = teclado.nextLine();
+
+				System.out.println("Introduzca un año: ");
+				int anoEstreno = teclado.nextInt();
+				gesPel.introducirPelicula(miListado, identi, titulou, Directoru, Generou, anoEstreno);
 				break;
 			case 2:
+				
 				gesPel.MostrarLista(miListado);
 				break;
 			case 3:
-				gesPel.BuscarId(miListado);
+				System.out.println("Introduce el Id a buscar:");
+				String idABuscar = teclado.next();
+				gesPel.BuscarId(miListado, idABuscar);
 				break;
 			case 4:
-				gesPel.BuscarTitulo(miListado);
+				System.out.println("Introduce el Titulo a buscar:");
+				String TituloABuscar = teclado.next();
+				gesPel.BuscarTitulo(miListado, TituloABuscar);
 				break;
 			case 5:
-				gesPel.BuscarGenero(miListado);
+				System.out.println("Introduce el Genero a buscar:");
+				String generoBuscar = teclado.next();
+				gesPel.BuscarGenero(miListado, generoBuscar);
 				break;
 			case 6:
-				gesPel.BorrarPeli(miListado);
+				System.out.println("Introduce el ID a borrar:");
+				String IDABorrar = teclado.next();
+				gesPel.BorrarPeli(miListado, IDABorrar);
 				break;
 			}
-			System.out.println(Texto);
 		} while (Boton != 7);
 		System.out.println("Has salido del programa");
 
