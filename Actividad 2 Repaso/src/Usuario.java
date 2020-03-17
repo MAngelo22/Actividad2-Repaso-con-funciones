@@ -43,7 +43,6 @@ public class Usuario extends GestorPeliculas{
 				gesPel.introducirPelicula(miListado, identi, titulou, Directoru, Generou, anoEstreno);
 				break;
 			case 2:
-				
 				gesPel.MostrarLista(miListado);
 				break;
 			case 3:
