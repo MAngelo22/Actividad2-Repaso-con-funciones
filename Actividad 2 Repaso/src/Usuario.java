@@ -7,9 +7,6 @@ public class Usuario extends GestorPeliculas {
 	public static void main(String[] args) {
 
 		GestorPeliculas gesPel = new GestorPeliculas();
-		// -------Crear-Peliculas------
-		ArrayList<Peliculas> miListado = GestorPeliculas.devuelveListado();
-
 		int Boton = 0;
 		// -----Funciones-Botones-------
 		do {
@@ -78,8 +75,8 @@ public class Usuario extends GestorPeliculas {
 				//si no encuentra nada parecido a lo introducido, sera null automaticamente.
 				System.out.println("Introduce el Genero a buscar:");
 				String generoBuscar = teclado.next();
-				ArrayList<Peliculas> miarrray = gesPel.BuscarGenero(generoBuscar);
-				for(Peliculas pel : miarrray) {
+				ArrayList<Peliculas> miarray = gesPel.BuscarGenero(generoBuscar);
+				for(Peliculas pel : miarray) {
 					pel.toString();
 				}
 				break;
