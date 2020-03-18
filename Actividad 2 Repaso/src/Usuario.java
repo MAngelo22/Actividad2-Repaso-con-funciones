@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Usuario extends GestorPeliculas{
+public class Usuario extends GestorPeliculas {
 	static Scanner teclado = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -18,12 +18,13 @@ public class Usuario extends GestorPeliculas{
 					+ "3- Buscar Pelicula por id\r\n" + "4- Buscar pelicula por titulo\r\n"
 					+ "5- Buscar Peliculas por genero\r\n" + "6- Borrar pelicula por id\r\n"
 					+ "7- Salir de la aplicación");
-			
+
 			// -----Interaccion-Usuario-----
 
 			Boton = teclado.nextInt();
 
 			switch (Boton) {
+			//-------------------------------------------------------------------------------------
 			case 1:
 				teclado.nextLine();
 				System.out.println("Creando pelicula:");
@@ -41,36 +42,57 @@ public class Usuario extends GestorPeliculas{
 
 				System.out.println("Introduzca un año: ");
 				int anoEstreno = teclado.nextInt();
-				gesPel.introducirPelicula(miListado, identi, titulou, Directoru, Generou, anoEstreno);
+				gesPel.introducirPelicula(identi, titulou, Directoru, Generou, anoEstreno);
 				break;
+	//-------------------------------------------------------------------------------------			
 			case 2:
-				gesPel.MostrarLista(miListado);
+				for (Peliculas films : listaPeliculas) {
+					System.out.println(films.toString());
+				}
 				break;
+	//-------------------------------------------------------------------------------------
 			case 3:
 				System.out.println("Introduce el Id a buscar:");
 				String idABuscar = teclado.next();
-				gesPel.BuscarId(miListado, idABuscar);
+				try {
+					Peliculas peliEncontrada = gesPel.BuscarId(idABuscar);
+					System.out.println(peliEncontrada.toString());
+				} catch (Exception e) {
+					System.out.println("No existe el ID solicitado " + e);
+				}
 				break;
+	//-------------------------------------------------------------------------------------			
 			case 4:
 				System.out.println("Introduce el Titulo a buscar:");
 				String TituloABuscar = teclado.next();
-				gesPel.BuscarTitulo(miListado, TituloABuscar);
+				try {
+					Peliculas peliEncontrada = gesPel.BuscarTitulo(TituloABuscar);
+					System.out.println(peliEncontrada.toString());
+				} catch (Exception e) {
+					System.out.println("No existe el Titulo solicitado " + e);
+				}
 				break;
+	//-------------------------------------------------------------------------------------
 			case 5:
+				//No hacemos un Exception, porque en el arrayList "pelisConMismoGenero",
+				//si no encuentra nada parecido a lo introducido, sera null automaticamente.
 				System.out.println("Introduce el Genero a buscar:");
 				String generoBuscar = teclado.next();
-				gesPel.BuscarGenero(miListado, generoBuscar);
+				ArrayList<Peliculas> miarrray = gesPel.BuscarGenero(generoBuscar);
+				for(Peliculas pel : miarrray) {
+					pel.toString();
+				}
 				break;
+	//-------------------------------------------------------------------------------------			
 			case 6:
 				System.out.println("Introduce el ID a borrar:");
 				String IDABorrar = teclado.next();
-				gesPel.BorrarPeli(miListado, IDABorrar);
+				gesPel.BorrarPeli(IDABorrar);
 				break;
 			}
-		} while (Boton != 7);
+		} 
+		while (Boton != 7);
 		System.out.println("Has salido del programa");
-
 	}
 
-	
 }

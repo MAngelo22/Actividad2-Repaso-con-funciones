@@ -5,59 +5,64 @@ import java.util.Scanner;
 public class GestorPeliculas {
 	static Scanner teclado = new Scanner(System.in);
 	static ArrayList<Peliculas> listaPeliculas = new ArrayList<Peliculas>();
-	
+
+	//Peliculas de ejemplo, para que no este vacio el Array.
 	public static ArrayList<Peliculas> rellenarLista(ArrayList<Peliculas> listaPeliculas) {
 		Peliculas Peli1, Peli2, Peli3;
-
+		
 		Peli1 = new Peliculas("P1", "BlackHat, Amenaza en la red", "Michael Mann", "Thriller|Crimen", 2015);
 		Peli2 = new Peliculas("P2", "The Imitation Game(Descifrando Enigma)", "Morten Tyldum", "Thriller|Biográfico",2014);
-		Peli3 = new Peliculas("P3", "Avengers Endgame", "Anthony Russo, Joe Russo (Hrmns Russo)",
-				"Ciencia Ficción|Superheroes", 2019);
+		Peli3 = new Peliculas("P3", "Avengers Endgame", "Anthony Russo, Joe Russo (Hrmns Russo)","Ciencia Ficción|Superheroes", 2019);
+		
 		listaPeliculas.add(Peli1);
 		listaPeliculas.add(Peli2);
 		listaPeliculas.add(Peli3);
+		
 		return listaPeliculas;
 	}
-	
-	public static ArrayList<Peliculas> devuelveListado(){
+
+	public static ArrayList<Peliculas> devuelveListado() {
 		return rellenarLista(listaPeliculas);
 	}
 
-	public void MostrarLista(ArrayList<Peliculas> listaPeliculas) {
-		for (Peliculas films : listaPeliculas) {
-			System.out.println(films.toString());
-		}
-	}
-	
-	public void introducirPelicula(ArrayList<Peliculas> listaPeliculas, String IDu, String titulou, String directoru, String Generou, int anoEstreno) {
+	public void introducirPelicula(String IDu, String titulou, String directoru, String Generou, int anoEstreno) {
 		listaPeliculas.add(new Peliculas(IDu, titulou, directoru, Generou, anoEstreno));
 	}
 
-	public void BuscarId(ArrayList<Peliculas> listaPeliculas, String idABuscar) {
+	public Peliculas BuscarId(String idABuscar) {
+		//Solo puede existir ese ID y no se puede duplicar o repetir.
 		for (Peliculas i : listaPeliculas) {
 			if (idABuscar.equals(i.getID())) {
-				System.out.println(i.toString());
+				return i;
 			}
 		}
+		return null;
 	}
 
-	public void BuscarTitulo(ArrayList<Peliculas> listaPeliculas, String TituloABuscar) {
-		for (Peliculas e : listaPeliculas) {
-			if (TituloABuscar.equals(e.getTitulo())) {
-				System.out.println(e.toString());
+	public Peliculas BuscarTitulo(String TituloABuscar) {
+		//Solo puede existir esa pelicula con el mismo titulo, es como el ID
+		for (Peliculas t : listaPeliculas) {
+			if (TituloABuscar.equals(t.getTitulo())) {
+				return t;
 			}
 		}
+		return null;
 	}
 
-	public void BuscarGenero(ArrayList<Peliculas> listaPeliculas, String generoBuscar) {
-		for (Peliculas a : listaPeliculas) {
-			if (generoBuscar.equals(a.getGenero())) {
-				System.out.println(a.toString());
+	public ArrayList<Peliculas> BuscarGenero(String generoBuscar) {
+		//Creo un nuevo array por las siguientes razones: Puede repetirse el mismo genero,
+		//y deberemos guardar las peliculas con ese genero en algun sitio, usamos un objeto arrayList,
+		//y al recorrerlo y cumpla la condicion añadira esa pelicula al nuevo arrayList
+		ArrayList<Peliculas> pelisConMismoGenero = new ArrayList<Peliculas>();
+		for (Peliculas g : listaPeliculas) {
+			if (generoBuscar.equals(g.getGenero())) {
+				pelisConMismoGenero.add(g);
 			}
 		}
+		return pelisConMismoGenero;
 	}
 
-	public void BorrarPeli(ArrayList<Peliculas> listaPeliculas, String IDABorrar) {
+	public void BorrarPeli(String IDABorrar) {
 		Iterator<Peliculas> iteradorPelis = listaPeliculas.iterator();
 		while (iteradorPelis.hasNext()) {
 			Peliculas peliBorra = iteradorPelis.next();
